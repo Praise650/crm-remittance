@@ -19,13 +19,10 @@ RUN npm ci --only=production
 # Copy application code
 COPY . .
 
-# Expose the port your app runs on (adjust if needed, e.g., 3000)
-# EXPOSE 3000
-
-# Expose port (if needed)
+# Expose port
 EXPOSE 5000
 
 # Use Doppler to run the app with secrets injected
 # Assumes your package.json has a "start" script (e.g., "node server.js")
 # For Dokploy deployment, set DOPPLER_TOKEN as an environment variable in your Dokploy project
-CMD ["doppler", "run", "--token", "$DOPPLER_TOKEN", "--", "npm", "start"]
+CMD ["doppler", "run", "--", "npm", "start"]
